@@ -12,32 +12,24 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 Pastikan untuk melakukan screenshot step by step yang dilakukan, untuk digunakan sebagai dokumentasi tugas.
 :::
 
-Setelah mempelajari terkait konfigurasi dan instalasi linux server, maka silakan buat sebuah environment linux dengan ketentuan sebagai berikut:
+Setelah mempelajari terkait multipass, deployment aplikasi node.js dan reverse proxy, maka silakan buat sebuah environment linux dengan ketentuan sebagai berikut:
 
 <center>
 <img alt="image1" src={useBaseUrl('img/docs/w12.png')} />
 </center>
 
-### VMware Environment
-- Disk       : 10 Gb
-- Memory     : 4 Gb
-- Processors : 2 Cores
-- Network    : Bridge
-
-### Ubuntu Settings
-- Bahasa       : English
-- Network      : Static
-- Storage      : Custom Storage Layout
-- Username     : (your-user-name)
-- Password     : (your-password)
-- Server Name  : (your-name)
-- OpenSSH      : True
+### Ketentuan
+- Multipass    : 2 Server (1 Server Gateway, 1 Server App)
+- CPU          : 1 vCPU
+- Memory       : 1 GB
+- Disk         : 10 GB
+- Reverse Proxy: dumbways.xyz
 
 ## 6.2 Pengumpulan
 1. Pastikan untuk mengerjakan tugas mingguan pada medium.com.
 2. Tulis step-by-step yang telah Anda lakukan secara detail dan sertakan screenshot setiap prosesnya. 
 3. Setelah menyelesaikan tugas, silakan publish artikel yang sudah dibuat.
-4. Clone Aplikasi berikut ini https://github.com/dumbwaysdev/waysgallery-frontend.git
+4. Gunakan aplikasi berikut untuk tugas https://github.com/dumbwaysdev/waysgallery-frontend.git
 
 Referensi:
 - [Medium](/Getting-Started/Medium/Medium)
@@ -47,14 +39,14 @@ Tambahkan deskripsi berikut ke dalam kanban pada project management Anda
 ```
 Konfigurasi environment dan instalasi linux server, dimana server tersebut dapat terkoneksi ke internet dan juga dapat di akses melalui SSH / Browser.
 
-- [ ] Definisikan apa itu DevOps menurut pemahamanmu
-- [ ] Buatlah environment untuk server (CPU, Memory, Storage dan Network)
-- [ ] Install linux ubuntu server 18.x / 20.x dengan VMware
-- [ ] Gunakan IP static untuk linux ubuntu server
-- [ ] Buat swap memory and root partition
-- [ ] Local server dapat terkoneksi dengan internet
-- [ ] Remote server
-- [ ] Jalankan aplikasi menggunakan PM2 agar aplikasi dapat dijalankan secara daemon
+- [ ] Definisikan apa itu Cloud Computing menurut pemahamanmu
+- [ ] Sebutkan alasan menggunakan Multipass dibandingkan dengan Vagrant
+- [ ] Buat 2 buat server menggunakan multipass dengan ketentuan 1 vCPU, 1 GB Memory, Disk 10 GB
+- [ ] Install NVM pada salah satu server (server app)
+- [ ] Deploy aplikasi waysgallery ke server app dan jalankan menggunakan PM2
+- [ ] Install Nginx pada salah satu server (server gateway)
+- [ ] Buatlah reverse proxy pada server gateway ke server app
+- [ ] Buatlah virtual domain dengan domain dumbways.xyz
 ```
 
 Referensi:
