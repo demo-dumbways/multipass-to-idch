@@ -6,7 +6,7 @@ sidebar_position: 4
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-Sekarang kita akan melakukan set-up aplikasi `node.js` untuk melakukannya kalian dapat mengikuti langkah-lagkan dibawah ini
+Sekarang kita akan melakukan set-up aplikasi frontend `node.js` untuk melakukannya kalian dapat mengikuti langkah-lagkan dibawah ini
 
 - Tahapan pertama kita akan melakukan instalasi `node.js` di server kita menggunakan `nvm`.
 - `nvm` merupakan singkatan dari **Node Version Manager**. `nvm` adalah sebuah program yang akan membantu kita untuk menggunakan lebih dari satu versi Nodejs di dalam satu komputer. Untuk melakukan installasi `node.js` menggunakan `nvm` kalian dapat menggunakan perintah berikut
