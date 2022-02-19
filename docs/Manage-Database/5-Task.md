@@ -12,32 +12,23 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 Pastikan untuk melakukan screenshot step by step yang dilakukan, untuk digunakan sebagai dokumentasi tugas.
 :::
 
-Setelah mempelajari terkait konfigurasi dan instalasi linux server, maka silakan buat sebuah environment linux dengan ketentuan sebagai berikut:
+Setelah mempelajari deployment aplikasi backend dan database, maka silakan buat sebuah environment linux dengan ketentuan sebagai berikut:
 
 <center>
 <img alt="image1" src={useBaseUrl('img/docs/w12.png')} />
 </center>
 
-### VMware Environment
-- Disk       : 10 Gb
-- Memory     : 4 Gb
-- Processors : 2 Cores
-- Network    : Bridge
-
-### Ubuntu Settings
-- Bahasa       : English
-- Network      : Static
-- Storage      : Custom Storage Layout
-- Username     : (your-user-name)
-- Password     : (your-password)
-- Server Name  : (your-name)
-- OpenSSH      : True
+### Ketentuan
+- Server App   : Gunakan untuk deploy aplikasi backend dan database MySQL
+- Database user: waysgallery
+- Database pass: waysgallery123
+- Reverse Proxy: api.dumbways.xyz
 
 ## 5.2 Pengumpulan
 1. Pastikan untuk mengerjakan tugas mingguan pada medium.com.
 2. Tulis step-by-step yang telah Anda lakukan secara detail dan sertakan screenshot setiap prosesnya. 
 3. Setelah menyelesaikan tugas, silakan publish artikel yang sudah dibuat.
-4. Clone Aplikasi berikut ini https://github.com/dumbwaysdev/waysgallery-frontend.git
+4. Clone Aplikasi berikut ini https://github.com/dumbwaysdev/waysgallery-backend.git
 
 Referensi:
 - [Medium](/Getting-Started/Medium/Medium)
@@ -45,16 +36,19 @@ Referensi:
 ## 5.3 Project Management
 Tambahkan deskripsi berikut ke dalam kanban pada project management Anda
 ```
-Konfigurasi environment dan instalasi linux server, dimana server tersebut dapat terkoneksi ke internet dan juga dapat di akses melalui SSH / Browser.
+Konfigurasi aplikasi backend dan database hingga proses migrasi database dengan sequelize
 
-- [ ] Definisikan apa itu DevOps menurut pemahamanmu
-- [ ] Buatlah environment untuk server (CPU, Memory, Storage dan Network)
-- [ ] Install linux ubuntu server 18.x / 20.x dengan VMware
-- [ ] Gunakan IP static untuk linux ubuntu server
-- [ ] Buat swap memory and root partition
-- [ ] Local server dapat terkoneksi dengan internet
-- [ ] Remote server
-- [ ] Jalankan aplikasi menggunakan PM2 agar aplikasi dapat dijalankan secara daemon
+- [ ] Definisikan apa itu Database menurut pemahamanmu
+- [ ] Jelaskan jenis aplikasi yang harus menggunakan SQL atapun NoSQL
+- [ ] Pada server yang telah dibuat sebelumnya, gunakan server app untuk menjalankan aplikasi backend dan database
+- [ ] Buat sebuah user baru untuk database waysgallery dengan ketentuan seperti di atas
+- [ ] Deploy aplikasi waysgallery backend ke server app dan jalankan menggunakan PM2
+- [ ] Buatlah reverse proxy pada server gateway ke server app backend yang sudah di setup
+- [ ] Buatlah virtual domain dengan domain api.dumbways.xyz
+- [ ] Ubah konfigurasi aplikasi frontend agar mengarah ke aplikasi backend
+- [ ] Ubah konfigurasi aplikasi backend agar mengarah ke aplikasi database
+- [ ] Install sequelize untuk migrate database tersebut
+- [ ] Aplikasi waysgallery dapat digunakan hingga proses register dan login
 ```
 
 Referensi:

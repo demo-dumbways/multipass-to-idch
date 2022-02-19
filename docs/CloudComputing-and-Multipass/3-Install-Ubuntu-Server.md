@@ -20,7 +20,7 @@ Kebutuhan minimum :
 - Memory 8 Gb
 - Sistem operasi linux ubuntu 18.04
 
-## Kenapa Multipass?
+## Kenapa Menggunakan Multipass?
 Karena `Multipass` lebih ringan dibandingkan dengan vmware, serta sistem yang digunakanpun berbasis command line. Sedangkan untuk vmware berbasis gui dimana memakan lebih banyak memory ketika dijalankan.
 
 ## 3.1 Multipass Installation 

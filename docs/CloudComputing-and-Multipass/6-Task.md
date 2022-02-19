@@ -37,7 +37,7 @@ Referensi:
 ## 6.3 Project Management
 Tambahkan deskripsi berikut ke dalam kanban pada project management Anda
 ```
-Konfigurasi environment dan instalasi linux server, dimana server tersebut dapat terkoneksi ke internet dan juga dapat di akses melalui SSH / Browser.
+Membuat server dengan custom server, hingga melakukan proses instalasi dan konfigurasi aplikasi frontend hingga dapat diakses
 
 - [ ] Definisikan apa itu Cloud Computing menurut pemahamanmu
 - [ ] Sebutkan alasan menggunakan Multipass dibandingkan dengan Vagrant
