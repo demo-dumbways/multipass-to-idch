@@ -5,7 +5,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "DevOps Stage 1",
+  title: "DevOps Stage 2",
   tagline: "E-book Guide for Mentor",
   url: "https://dumbways.id",
   baseUrl: "/",
@@ -35,7 +35,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: "DevOps Stage 1",
+        title: "DevOps Stage 2",
         logo: {
           alt: "DumbWays Logo",
           src: "img/logo.svg",
