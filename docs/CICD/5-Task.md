@@ -15,7 +15,7 @@ Pastikan untuk melakukan screenshot step by step yang dilakukan, untuk digunakan
 Setelah mempelajari CI/CD mulai dari instalasi, konfigurasi hingga akhirnya dapat digunakan, maka silakan buat sebuah environment CICD dengan ketentuan sebagai berikut:
 
 <center>
-<img alt="image1" src={useBaseUrl('img/docs/w12.png')} />
+<img alt="image1" src={useBaseUrl('img/docs/w11.png')} />
 </center>
 
 ### Ketentuan
@@ -49,7 +49,6 @@ Konfigurasi aplikasi frontend, backend dan database hingga proses CICD
 Referensi:
 - [Membuat GitHub Project](/Getting-Started/Project-Management/Make-Project-Management)
 - [Manage GitHub Issue](/Getting-Started/Project-Management/Issue-Dan-Status-Project)
-- [PM2](https://www.npmjs.com/package/pm2)
 
 ## 5.4 Diskusi
 Silakan diskusikan terkait kendala atau kesulitan selama pembelajaran pada platform diskusi (slack/talk.ink) dengan membuat thread, misalnya "Introduction DevOps: problem cannot connect to network in VMware" 
