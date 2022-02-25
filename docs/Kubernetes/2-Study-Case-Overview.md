@@ -11,4 +11,4 @@ Pada pembelajaran kali ini kita akan membuat study case seperti berikut:
 <img alt="image1" src={useBaseUrl('img/docs/bck17.png')} />
 </center>
 
-Kita mulai belajar cara deploy aplikasi Backend yang dibuat dengan Node.js, kemudian instalasi dan konfigurasi database MySQL hingga menjalankan perintah sequelize untuk membuat database dan table secara otomatis.
+Kita mulai belajar bagaimana cara instalasi kubernetes dan mendeploy aplikasi microservices.

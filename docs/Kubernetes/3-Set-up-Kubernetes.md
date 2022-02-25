@@ -2,207 +2,271 @@
 sidebar_position: 3
 ---
 
-# 3. MySQL 
+# 3. Setup Kubernetes 
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-**MySQL** adalah sistem manajemen database relasional (RDBMS) berbasis SQL (Structured Query Language) yang bersifat open-source dengan model client-server. RDBMS merupakan software untuk membuat dan mengelola database berdasarkan model relasional.
+Proses instalasi kubernetes dapat dilakukan dengan cara manual, jika ingin instalasi kubernetes secara otomatis dengan menggunakan kubespray.
 
-## 3.1 MySQL Installation
+## 3.1 Menyediakan Server
 
-- Tahapan pertama yang harus kalian lakukan adalah membuat satu buah server untuk database menggunakan multipass.
+Berikut adalah spesifikasi minimum untuk server yang akan diinstall kubernetes.
+
+### Requirements
+- Ubuntu Server 20.04
+- CPU 2 Core
+- Memory 2 Gb
+- Disk 10 Gb
+
+Minimal membuat 3 server dengan spesifikasi diatas dengan multipass atau server cloud.
+
+Beri nama server tersebut : 
+- Manager
+- Node1
+- Node2
+
+## 3.2 Konfigurasi Server
+
+Sebelum melakukan instalasi kubernetes, terdapat beberapa hal yang perlu dikonfigurasi.
+
+### Menonaktifkan firewall
+
+Karena kubernetes memerlukan banyak port yang akan digunakan dengan random maka perlu di nonaktifkan.
 
   ```shell
-  multipass launch --name (name)
+  ufw disable
   ```
 
   <center>
-  <img alt="image1" src={useBaseUrl('img/docs/d1.png')} height="400px"/>
+  <img alt="image1" src={useBaseUrl('img/docs/kube-install-1.png')} height="400px"/>
   </center>
 
-  <center>
-  <img alt="image1" src={useBaseUrl('img/docs/d2.png')} height="400px"/>
-  </center>
+### Menonaktifkan swap
 
-- Selanjutnya jalankan perintah dibawah ini untuk melakukan instalasi mysql-server
+Agar kubernetes secara optimal menggunakan seluruh memory maka harus menonaktifkan swap.
 
   ```shell
-  sudo apt update; sudo apt upgrade
+  swapoff -a; sed -i '/swap/d' /etc/fstab
   ```
 
   <center>
-  <img alt="image1" src={useBaseUrl('img/docs/d3.png')} height="400px"/>
+  <img alt="image1" src={useBaseUrl('img/docs/kube-install-2.png')} height="400px"/>
   </center>
 
+### Update kernel system
+
+Kubernetes membutuhkan update konfigurasi kernel pada system
+
   ```shell
-  sudo apt install mysql*
+  cat >>/etc/sysctl.d/kubernetes.conf<<EOF
+  net.bridge.bridge-nf-call-ip6tables = 1
+  net.bridge.bridge-nf-call-iptables = 1
+  EOF
   ```
 
   <center>
-  <img alt="image1" src={useBaseUrl('img/docs/d4.png')} height="400px"/>
+  <img alt="image1" src={useBaseUrl('img/docs/kube-install-3.png')} height="400px"/>
   </center>
-
-- Setelah selesai tahapan selanjutnya ada melakukan mengamankan aplikasi database kalian. Kalian dapat menggunakan perintah dibawah ini
 
   ```shell
-  sudo mysql_secure_installation
+  sysctl --system
   ```
 
-  :::info
-  Sesuaikan jawaban dari pertanyaan yang diajukan oleh mysql
-  :::
-
-  - Press y|Y for Yes, any other key for No: y
-  - Please enter 0 = LOW, 1 = MEDIUM and 2 = STRONG: 0 
-  - Do you wish to continue with the password provided?(Press y|Y for Yes, any other key for No) : y
-  - Remove anonymous users? (Press y|Y for Yes, any other key for No) : y
-  - Disallow root login remotely? (Press y|Y for Yes, any other key for No) : n
-  - Reload privilege tables now? (Press y|Y for Yes, any other key for No) : y
-  - Remove test database and access to it? (Press y|Y for Yes, any other key for No) : y
-
-
   <center>
-  <img alt="image1" src={useBaseUrl('img/docs/d5.png')} height="400px"/>
+  <img alt="image1" src={useBaseUrl('img/docs/kube-install-4.png')} height="400px"/>
   </center>
 
+### Install docker
+
+Lakukan instalasi docker dan docker compose.
+
+  ```shell
+  wget -O - https://gist.githubusercontent.com/sgnd/8ac5130ec4439985d14d118c77b7b418/raw/c351376fd4d7afbca587f8ed1f2fd57f87e113ce/docker.sh | bash
+  ```
+
+### Konfigurasi docker
+
+Terkadang ketika melakukan instalasi kubernetes tidak dapat berjalan dengan baik, maka kita perlu mengupdate docker configuration.
+
+  ```shell
+  cat <<EOF | sudo tee /etc/docker/daemon.json
+  {
+  "exec-opts": ["native.cgroupdriver=systemd"],
+  "log-driver": "json-file",
+  "log-opts": {
+  "max-size": "100m"
+  },
+  "storage-driver": "overlay2"
+  }
+  EOF
+  ```
+
   <center>
-  <img alt="image1" src={useBaseUrl('img/docs/d6.png')} height="400px"/>
+  <img alt="image1" src={useBaseUrl('img/docs/kube-install-6.png')} height="400px"/>
   </center>
 
+Lakukan restart docker, jika telah selesai melakukan konfigurasi
+
+  ```shell
+  sudo systemctl enable docker
+  sudo systemctl daemon-reload
+  sudo systemctl restart docker
+  ```
 
   <center>
-  <img alt="image1" src={useBaseUrl('img/docs/d7.png')} height="400px"/>
+  <img alt="image1" src={useBaseUrl('img/docs/kube-install-7.png')} height="400px"/>
   </center>
 
-- Setelah selesai untuk menjalankan semua konfigurasi di atas, sekarang kita coba login ke dalam **mysql** menggunakan akun **root**
+## 3.3 Instalasi Kubernetes
+
+Kemudian kita akan melakukan instalasi
+- kubelet
+- kubeadm
+- kubectl
+
+  ```shell
+  sudo apt -y install curl apt-transport-https
+  curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+  echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+  sudo apt update -y; sudo apt -y install kubelet kubeadm kubectl
+  ```
+
+  <center>
+  <img alt="image1" src={useBaseUrl('img/docs/kube-install-8.png')} height="400px"/>
+  </center>
+
+### Konfigurasi Kubeadm 
+
+Berikut ini adalah perintah yang akan digunakan untuk menginisialisasi sebuah cluster. Jalankan perintah ini pada server **manager**
+
+  ```shell
+  sudo kubeadm init --apiserver-advertise-address=ip-address --pod-network-cidr=192.168.0.0/16  --ignore-preflight-errors=all
+  ```
+
+  <center>
+  <img alt="image1" src={useBaseUrl('img/docs/kube-install-9.png')} height="400px"/>
+  </center>
+
+Ganti **ip-address** dengan IP server yang digunakan, kemudian akan ada perintah untuk join cluster.
+
+### Konfigurasi Kubeconfig 
+
+Lakukan copy konfigurasi tersebut untuk digunakan pada kubectl
+
+  ```shell
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+  ```
+
+  <center>
+  <img alt="image1" src={useBaseUrl('img/docs/kube-install-10.png')} height="400px"/>
+  </center>
+
+### Instalasi CNI
+
+Selanjutnya kita akan melakukan instalasi CNI Calico
+
+  ```shell
+  kubectl --kubeconfig=/etc/kubernetes/admin.conf create -f https://projectcalico.docs.tigera.io/manifests/calico.yaml
+  ```
+
+  <center>
+  <img alt="image1" src={useBaseUrl('img/docs/kube-install-11.png')} height="400px"/>
+  </center>
+
+Lakukan pengecekan apakah CNI Calico sudah terinstall
+
+  ```shell
+  kubectl get pods --all-namespaces
+  ```
+
+### Melakukan Join Cluster
+
+Jalankan perintah berikut pada server **Manager**
+
+  ```shell
+  kubeadm token create --print-join-command
+  ```
   
-  ```shell
-  sudo mysql -u root -p
-  ```
   <center>
-  <img alt="image1" src={useBaseUrl('img/docs/d8.png')} height="400px"/>
+  <img alt="image1" src={useBaseUrl('img/docs/kube-install-12.png')} height="400px"/>
   </center>
 
-## 3.2 Create User 
+Output dari perintah diatas perlu dijalankan pada server **Node1** dan **Node2**
 
-- Setelah melakukan instalasi **mysql** server, sekarang kita akan mencoba membuat user untuk **mysql**. Untuk bagaimana cara membuatnya kalian dapat menggunakan perintah di bawah ini
+Kemudian pastikan untuk memeriksa apakah server dari **Node1** dan **Node2** sudah terkoneksi dengan cluster.
 
   ```shell
-  sudo mysql -u root -p
+  kubectl get nodes
   ```
 
   <center>
-  <img alt="image1" src={useBaseUrl('img/docs/d8.png')} height="400px"/>
+  <img alt="image1" src={useBaseUrl('img/docs/kube-install-14.png')} height="400px"/>
   </center>
 
-  ```shell
-  CREATE USER 'newuser'@'%' IDENTIFIED BY 'password';
-  ```
+### Update Label Node (Optional)
+
+Jalankan perintah berikut pada server **Manager**
+
+```shell
+kubectl label server-node worker node-role.kubernetes.io/worker=worker
+```
+
+Ganti **server-node** dengan nama **Node1** dan **Node2**
+
+### 3.4 Deploy Simple App
+
+Jalankan perintah berikut untuk menjalankan aplikasi sederhana.
+
+```shell
+kubectl create deploy nginx --image nginx
+```
 
   <center>
-  <img alt="image1" src={useBaseUrl('img/docs/d9.png')} height="400px"/>
+  <img alt="image1" src={useBaseUrl('img/docs/kube-install-15.png')} height="400px"/>
   </center>
 
-  keterangan : perintah di atas ini adalah perintah untuk membuat user baru di mysql
+Untuk mengetahui apakah pods sudah ready, gunakan perintah berikut
 
-  ```shell
-  GRANT ALL PRIVILEGES ON *.* TO 'newuser'@'%';
-  ```
+```shell
+kubectl get pods
+```
 
   <center>
-  <img alt="image1" src={useBaseUrl('img/docs/d10.png')} height="400px"/>
+  <img alt="image1" src={useBaseUrl('img/docs/kube-install-16.png')} height="400px"/>
   </center>
 
-  keterangan : perintah di atas ini adalah perintah untuk mengizinkan user yang sudah kalian buat dapat login tanpa menggunakan perintah `sudo`
+Untuk mengexpose aplikasi yang dijalankan pada kubernetes dapat menggunakan aplikasi berikut
 
-  ```shell
-  FLUSH PRIVILEGES;
-  ```
+```shell
+kubectl expose deploy nginx --port 80 --type NodePort
+```
 
   <center>
-  <img alt="image1" src={useBaseUrl('img/docs/d11.png')} height="400px"/>
+  <img alt="image1" src={useBaseUrl('img/docs/kube-install-17.png')} height="400px"/>
   </center>
 
-  keterangan : perintah di atas ini adalah perintah untuk me-restart mysql kalian
+Untuk memeriksa port yang telah di expose perlu menjalankan berikut
 
-- Jika sudah sekarang coba untuk masuk ke dalam user yang telah kalian buat
+```shell
+kubectl get svc
+```
 
-  ```shell
-  mysql -u (mysql user) -p 
-  ```
+Tampilan jika aplikasi telah berhasil di akses melalui IP dan Port
 
   <center>
-  <img alt="image1" src={useBaseUrl('img/docs/d12.png')} height="400px"/>
+  <img alt="image1" src={useBaseUrl('img/docs/kube-install-18.png')} />
   </center>
 
-## 3.3 Create Database
+Untuk menghapus pods dapat menggunakan perintah
 
-- Sekarang kita akan mencoba untuk membuat database untuk aplikasi yang akan kita jalankan.
-- Kalian dapat mengikuti langkah-langkah di bawah ini
+```shell
+kubectl delete deploy nginx
+```
 
-  ```shell
-  create database (db name);
-  ```
+Untuk menghapus service dapat menggunakan perintah 
 
-  <center>
-  <img alt="image1" src={useBaseUrl('img/docs/d13.png')} height="400px"/>
-  </center>
-
-  keterangan : perintah diatas adalah perintah untuk membuat database
-
-
-  ```shell
-  show databases;
-  ```
-
-  <center>
-  <img alt="image1" src={useBaseUrl('img/docs/d14.png')} height="400px"/>
-  </center>
-
-  keterangan : perintah di atas adalah perintah untuk melihat database apa saja yang tersedia
-
-
-  ```shell
-  use (db name);
-  ```
-
-  <center>
-  <img alt="image1" src={useBaseUrl('img/docs/d15.png')} height="400px"/>
-  </center>
-
-  keterangan : perintah di atas adalah perintah untuk masuk ke dalam database yang telah kalian buat
-
-
-  ```shell
-  show tables;
-  ```
-
-  <center>
-  <img alt="image1" src={useBaseUrl('img/docs/d16.png')} height="400px"/>
-  </center>
-
-  keterangan : perintah di atas adalah perintah untuk melihat isi dari database yang telah kalian buat 
-
-## 3.4 Change config Database
-
-- Sekarang kita akan ubah pada bagian `/etc/mysql/mysql.conf/mysql.cnf`
-
-  ```shell
-  sudo nano /etc/mysql/mysql.conf/mysql.cnf
-  ```
-
-- Kita ubah pada bagian bind address dan mysql bind addres menjadi all-trafic `0.0.0.0`
-
-  <center>
-  <img alt="image1" src={useBaseUrl('img/docs/d+.png')} height="400px"/>
-  </center>
-
-- Jika sudah save selanjutnya restart service dari mysql
-
-  ```shell
-  sudo systemctl restart mysql
-  ```
-
-  <center>
-  <img alt="image1" src={useBaseUrl('img/docs/d++.png')} height="400px"/>
-  </center>
+```shell
+kubectl delete service nginx
+```
