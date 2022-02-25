@@ -68,17 +68,17 @@ Sekarang kita akan melakukan instalasi prometheus pada salah satu server yang te
   ```
 
   ```bash
-  global:
-   scrape_interval: 10s
-  scrape_configs:
-   - job_name: 'prometheus_metrics'
-   scrape_interval: 5s
-   static_configs:
-     - targets: ['localhost:9090']
-   - job_name: 'node_exporter_metrics'
-   scrape_interval: 5s
-   static_configs:
-   	- targets: ['localhost:9100','prometheus-target-1:9100','prometheus-target-2:9100']
+    global:
+     scrape_interval: 10s
+    scrape_configs:
+     - job_name: 'prometheus_metrics'
+       scrape_interval: 5s
+       static_configs:
+       - targets: ['localhost:9090']
+     - job_name: 'node_exporter_metrics'
+       scrape_interval: 5s
+       static_configs:
+   	   - targets: ['localhost:9100','prometheus-target-1:9100','prometheus-target-2:9100']
   ```
   
   :::info
