@@ -405,3 +405,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
   <center>
   <img alt="image1" src={useBaseUrl('img/docs/ans34.png')} height="400px"/>
   </center>
+
+  <center>
+  <img alt="image1" src={useBaseUrl('img/docs/ans35.png')} height="400px"/>
+  </center>
