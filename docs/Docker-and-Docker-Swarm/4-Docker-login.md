@@ -7,33 +7,34 @@ sidebar_position: 4
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## 4.1 SetUp Docker command without sudo
-Pada tahapan kali ini kita akan mencoba melakukan setup untuk command `docker` yang akan kita pakai nantinya agar saat kita menggunakan command `docker` tersebut kita sudah tidak perlu menggunakan perintah `sudo`. Untuk tahapnya kalian dapat mengikuti beberapa perintah dibawah ini
+
+Pada tahapan kali ini kita akan mencoba melakukan setup untuk root command `docker` yang akan kita pakai nantinya agar saat kita menggunakan command `docker` tersebut kita sudah tidak perlu menggunakan perintah `sudo`. Untuk tahapnya kalian dapat mengikuti beberapa perintah dibawah ini :
 
 ```bash
 sudo groupadd docker
 ```
 
-keterangan : perintah di atas ini adalah suatu perintah untuk menambahkan group `docker`
+**keterangan :** perintah di atas ini adalah suatu perintah untuk menambahkan group `docker`
 
 ```bash
 sudo usermod -aG docker (user)
 ```
 
-keterangan : perintah di atas ini adalah suatu perintah untuk mengizinkan user yang kalian gunakan agar dapat menjalankan perintah `docker` tanpa menggunakan perintah `sudo`
+**keterangan :** perintah di atas ini adalah suatu perintah untuk mengizinkan user yang kalian gunakan agar dapat menjalankan perintah `docker` tanpa menggunakan perintah `sudo`
 
   <center>
   <img alt="image1" src={useBaseUrl('img/docs/doc14.png')} height="400px"/>
-  </center> 
+  </center>
 
 sekarang kita coba mengakses perintah `docker` ini tanpa menggunakan perintah sudo
 
 ```bash
 docker ps
 ```
-  
+
   <center>
   <img alt="image1" src={useBaseUrl('img/docs/doc15.png')} height="400px"/>
-  </center> 
+  </center>
 
 ## 4.2 Docker Login
 
@@ -51,4 +52,4 @@ selanjutnya akan muncul notifikasi untuk memasukkan **user** dari docker.hub kal
 
   <center>
   <img alt="image1" src={useBaseUrl('img/docs/doc16.png')} height="400px"/>
-  </center> 
+  </center>

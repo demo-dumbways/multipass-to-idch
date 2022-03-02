@@ -9,9 +9,10 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 **Prometheus** adalah open source, sistem monitoring berbasis metrics. Prometheus mudah di gunakan serta memiliki model data yang powerful dan bahasa query yang dapat menganalisa aplikasi dan infrastruktur yang kita miliki.
 
 ## 4.1 Prometheus Installation
+
 Sekarang kita akan melakukan instalasi prometheus pada salah satu server yang telah kalian buat.
 
-- Pertama-tama kita lakukan installasi prometheus terlebih dahulu
+- Pertama-tama kita lakukan installasi prometheus terlebih dahulu.
 
   ```bash
   wget https://github.com/prometheus/prometheus/releases/download/v2.1.0/prometheus-2.1.0.linux-amd64.tar.gz
@@ -21,7 +22,7 @@ Sekarang kita akan melakukan instalasi prometheus pada salah satu server yang te
   <img alt="image1" src={useBaseUrl('img/docs/mon12.png')} height="400px"/>
   </center>
 
-- Selanjutnya extract prometheus yang telah kalian install
+- Selanjutnya extract prometheus yang telah kalian install.
 
   ```bash
   tar -xf prometheus-2.1.0.linux-amd64.tar.gz
@@ -39,10 +40,10 @@ Sekarang kita akan melakukan instalasi prometheus pada salah satu server yang te
 
   <center>
   <img alt="image1" src={useBaseUrl('img/docs/mon14.png')} height="400px"/>
-  </center>  
+  </center>
 
-- Setelah itu buat sebuah directory di dalam `/etc` dan `/var/lib` dengan nama prometheus
-  
+- Setelah itu buat sebuah directory di dalam `/etc` dan `/var/lib` dengan nama prometheus.
+
   ```bash
   sudo mkdir /etc/prometheus /var/lib/prometheus
   ```
@@ -61,7 +62,7 @@ Sekarang kita akan melakukan instalasi prometheus pada salah satu server yang te
   <img alt="image1" src={useBaseUrl('img/docs/mon16.png')} height="400px"/>
   </center>
 
-- Selanjutnya buat file konfigurasi pada `/etc/prometheus/` dengan nama `prometheus.yml`. Lalu masukkan konfigurasi berikut ini
+- Selanjutnya buat file konfigurasi pada `/etc/prometheus/` dengan nama `prometheus.yml`. Lalu masukkan konfigurasi berikut ini :
 
   ```bash
   sudo nano /etc/prometheus/prometheus.yml
@@ -80,16 +81,16 @@ Sekarang kita akan melakukan instalasi prometheus pada salah satu server yang te
        static_configs:
    	   - targets: ['localhost:9100','prometheus-target-1:9100','prometheus-target-2:9100']
   ```
-  
+
   :::info
   ubah pada bagian target, pastikan sesuai dengan IP dari server kalian
   :::
 
   <center>
   <img alt="image1" src={useBaseUrl('img/docs/mon17.png')} height="400px"/>
-  </center>  
+  </center>
 
-- Sekarang kita tambahkan user untuk `prometheus` yang telah kita pindahkan sebelumnya
+- Sekarang kita tambahkan user untuk `prometheus` yang telah kita pindahkan sebelumnya.
 
   ```bash
   sudo useradd -rs /bin/false prometheus
@@ -97,9 +98,9 @@ Sekarang kita akan melakukan instalasi prometheus pada salah satu server yang te
 
   <center>
   <img alt="image1" src={useBaseUrl('img/docs/mon18.png')} height="400px"/>
-  </center> 
+  </center>
 
-- Selanjutnya kita akan mengganti ownership untuk prometheus kita
+- Selanjutnya kita akan mengganti ownership untuk prometheus kita.
 
   ```bash
   sudo chown -R prometheus: /etc/prometheus /var/lib/prometheus
@@ -109,7 +110,7 @@ Sekarang kita akan melakukan instalasi prometheus pada salah satu server yang te
   <img alt="image1" src={useBaseUrl('img/docs/mon19.png')} height="400px"/>
   </center>
 
-- Selanjut buat file konfigurasi pada `/etc/systemd/system/` dengan nama `prometheus.service`, setelah itu masukkan konfigurasi berikut ini
+- Selanjut buat file konfigurasi pada `/etc/systemd/system/` dengan nama `prometheus.service`, setelah itu masukkan konfigurasi berikut ini :
 
   ```bash
   sudo nano /etc/systemd/system/prometheus.service
@@ -138,12 +139,13 @@ Sekarang kita akan melakukan instalasi prometheus pada salah satu server yang te
   <img alt="image1" src={useBaseUrl('img/docs/mon20.png')} height="400px"/>
   </center>
 
-  keterangan : 
+  **keterangan :**
+
   - [Unit] adalah nama dari si aplikasinya
   - [Service] adalah informasi dari aplikasi
   - [Install] adalah informasi untuk `prometheus` bisa di jalankan oleh user lain selain `prometheus`
 
-- Karena kita tadi telah menambahkan konfigurasi untuk file service `Prometheus`, sekarang kita akan melakukan reload untuk si servicenya. Untuk perintahnya kalian dapat menggunakan perintah dibawah ini
+- Karena kita tadi telah menambahkan konfigurasi untuk file service `Prometheus`, sekarang kita akan melakukan reload untuk si servicenya. Untuk perintahnya kalian dapat menggunakan perintah dibawah ini :
 
   ```bash
   sudo systemctl daemon-reload
@@ -153,7 +155,7 @@ Sekarang kita akan melakukan instalasi prometheus pada salah satu server yang te
   <img alt="image1" src={useBaseUrl('img/docs/mon21.png')} height="400px"/>
   </center>
 
-- Sekarang kita tinggal menghidupukan `prometheus` kita 
+- Sekarang kita tinggal menghidupukan `prometheus` kita.
 
   ```bash
   sudo systemctl enable prometheus
@@ -163,7 +165,7 @@ Sekarang kita akan melakukan instalasi prometheus pada salah satu server yang te
   <img alt="image1" src={useBaseUrl('img/docs/mon22.png')} height="400px"/>
   </center>
 
-- Karena kita pertama kali membuat `prometheus` ini, sekarang kita akan menjalankan service dari si `prometheus`
+- Karena kita pertama kali membuat `prometheus` ini, sekarang kita akan menjalankan service dari `prometheus`.
 
   ```bash
   sudo systemctl start prometheus
@@ -173,7 +175,7 @@ Sekarang kita akan melakukan instalasi prometheus pada salah satu server yang te
   <img alt="image1" src={useBaseUrl('img/docs/mon23.png')} height="400px"/>
   </center>
 
-- Jika tahapan diatas telah kalian jalankan sekarang kita coba cek apakah `prometheus` kita telah berjalan atau tidak
+- Jika tahapan diatas telah kalian jalankan sekarang kita coba cek apakah `prometheus` kita telah berjalan atau tidak.
 
   ```bash
   sudo systemctl status prometheus
@@ -189,43 +191,57 @@ Sekarang kita akan melakukan instalasi prometheus pada salah satu server yang te
 
   <center>
   <img alt="image1" src={useBaseUrl('img/docs/mon25.png')} height="400px"/>
-  </center> 
-
+  </center>
 
 ## 4.2 Use prometheus
-Untuk menggunakan `prometheus` ini kalian hanya tinggal cari apa yang kalian ingin kan pada bagian `expression`. Contoh disini saya akan mencari `cpu`, jika sudah sesuai dengan yang kalian cari kalian tinggal klik pada bagian `Execute` 
+
+Untuk menggunakan `prometheus` ini kalian hanya tinggal cari apa yang kalian ingin kan pada bagian `expression`. Contoh disini saya akan mencari `cpu`, jika sudah sesuai dengan yang kalian cari kalian tinggal klik pada bagian `Execute`
 
   <center>
   <img alt="image1" src={useBaseUrl('img/docs/mon26.png')} height="400px"/>
-  </center> 
+  </center>
+  
+<br></br>
 
-Kalian dapat memilih menu bagian `graph` jika kalian ingin menampilkan monitoring `cpu` berbentuk grafik, Kalian juga dapat melakukan setup ingin menampilkan data setiap berapa jam maupun menit
+Kalian dapat memilih menu bagian `graph` jika kalian ingin menampilkan monitoring `cpu` berbentuk grafik, Kalian juga dapat melakukan setup ingin menampilkan data setiap berapa jam maupun menit.
+
+<br></br>
 
   <center>
   <img alt="image1" src={useBaseUrl('img/docs/mon28.png')} height="400px"/>
-  </center> 
+  </center>
 
-Untuk informasi dari grafik yang ada kalian dapat scroll kebawah lalu kalian akan menemukan informasi grafik berdasarkan warna dari grafik monitoring kalian
+<br></br>
+
+Untuk informasi dari grafik yang ada kalian dapat scroll kebawah lalu kalian akan menemukan informasi grafik berdasarkan warna dari grafik monitoring kalian.
+
+<br></br>
 
   <center>
   <img alt="image1" src={useBaseUrl('img/docs/mon27.png')} height="200px"/>
-  </center> 
+  </center>
 
-Selanjutnya untuk melihat server kalian apakah ada yang down atau tidak kalian dapat pergi ke bagian `status` selanjutnya `targets`
+<br></br>
+
+Selanjutnya untuk melihat server kalian apakah ada yang down atau tidak kalian dapat pergi ke bagian `status` selanjutnya `targets`.
+
+<br></br>
 
   <center>
   <img alt="image1" src={useBaseUrl('img/docs/mon29.png')} height="400px"/>
-  </center> 
+  </center>
 
   <center>
   <img alt="image1" src={useBaseUrl('img/docs/mon30.png')} height="400px"/>
-  </center> 
+  </center>
 
-Untuk membuktikkannya sekarang kita coba untuk menghentikan salah satu server multipass kita 
+<br></br>
 
-  ```bash
-  multipass stop (server name)
-  ```
+Untuk membuktikkannya sekarang kita coba untuk menghentikan salah satu server multipass kita
+
+```bash
+multipass stop (server name)
+```
 
   <center>
   <img alt="image1" src={useBaseUrl('img/docs/mon31.png')} height="400px"/>
@@ -233,7 +249,8 @@ Untuk membuktikkannya sekarang kita coba untuk menghentikan salah satu server mu
 
 Selanjutnya cek pada prometheus kalian lalu refresh web.browser kalian
 
+<br></br>
+
   <center>
   <img alt="image1" src={useBaseUrl('img/docs/mon32.png')} height="400px"/>
   </center>
-

@@ -6,21 +6,23 @@ sidebar_position: 1
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-**Kubernetes** merupakan teknologi yang dibuat untuk mempermudah distribusi aplikasi pada sebuah cluster yang terdiri dari beberapa server. Kubernetes memudahkan kita untuk memanajemen pods yang di deploy pada beberapa server.
+**Kubernetes** merupakan teknologi yang dibuat untuk mempermudah distribusi aplikasi pada sebuah cluster yang terdiri dari beberapa server. Kubernetes memudahkan kita untuk memanajemen `pods` pods pada Kubernates dapat di artikan sebagai `container docker` yang di deploy pada beberapa server.
 
 ## 1.1 Kenapa Menggunakan Kubernetes?
 
 Berikut ini adalah keuntungan menggunakan kubernetes:
+
 - Mengatasi down lebih cepat (high availability)
 - Mudah untuk scaling aplikasi (scale)
 
-##  1.2 Arsitektur Kubernetes
+## 1.2 Arsitektur Kubernetes
 
   <center>
   <img alt="image1" src={useBaseUrl('img/docs/kube.png')} height="400px"/>
   </center>
 
 Kubernetes terdiri dari beberapa komponen:
+
 - Control Plane : Merupakan server utama dalam sebuah cluster kubernetes yang berisi etcd, kube api, kube scheduler. Seluruh server dalam cluster tersebut akan terhubung dengan control plane.
 
 - Etcd : Merupakan bagian yang akan menyimpan data-data key value cluster.
@@ -42,4 +44,3 @@ Kubernetes terdiri dari beberapa komponen:
 - Container Network Interface (CNI) : Merupakan penghubung antara container dan menghapus koneksi jika container tersebut dihapus.
 
 - Persistent Volume : Merupakan komponen yang dapat melakukan penyimpanan data di dalam server dan dapat sharing antar node.
-

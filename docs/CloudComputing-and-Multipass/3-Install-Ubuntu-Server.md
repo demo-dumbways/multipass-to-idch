@@ -6,9 +6,10 @@ sidebar_position: 3
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-**Multipass** adalah sebuah tools yang dapat memudahkan Anda untuk menjalankan versi Ubuntu yang diperlukan secara virtual. Multipass dirancang untuk pengembang yang menginginkan lingkungan Ubuntu dengan satu perintah. 
+**Multipass** adalah sebuah tools yang dapat memudahkan Anda untuk menjalankan versi Ubuntu yang diperlukan secara virtual. Multipass dirancang untuk pengembang yang menginginkan lingkungan Ubuntu dengan satu perintah.
 
 Multipass dapat berjalan seperti membuat cloud computing, tapi pada local komputer Anda seperti :
+
 - Membuat server baru
 - Mengatur spesifikasi server yang dibuat
 - Mengatur keamanan server
@@ -16,17 +17,20 @@ Multipass dapat berjalan seperti membuat cloud computing, tapi pada local komput
 - Dan sebagainya
 
 Kebutuhan minimum :
+
 - CPU i3 - 3115C (mendukung virtualisasi)
 - Memory 8 Gb
 - Sistem operasi linux ubuntu 18.04
 
 ## Kenapa Menggunakan Multipass?
-Karena `Multipass` lebih ringan dibandingkan dengan vmware, serta sistem yang digunakanpun berbasis command line. Sedangkan untuk vmware berbasis gui dimana memakan lebih banyak memory ketika dijalankan.
 
-## 3.1 Multipass Installation 
+Karena `Multipass` lebih ringan dibandingkan dengan vmware, serta sistem yang digunakanpun berbasis command line. Sedangkan untuk `vmware` berbasis gui dimana memakan lebih banyak resource ketika dijalankan.
+
+## 3.1 Multipass Installation
+
 Untuk Melakukan instalasi multipass kalian dapat menggunakan beberapa perintah dibawah ini.
 
-- Pertama-tama kalian harus melakukan installasi package manager ubuntu yaitu `snap`
+- Pertama-tama kalian harus melakukan installasi package manager ubuntu yaitu `snap`.
 
   ```shell
   sudo apt install snapd
@@ -42,11 +46,12 @@ Untuk Melakukan instalasi multipass kalian dapat menggunakan beberapa perintah d
   ```shell
   sudo snap install multipass
   ```
+
   <center>
   <img alt="image1" src={useBaseUrl('img/docs/m2.png')} height="350px"/>
   </center>
 
-- Jika kalian sudah menjalankan beberapa perintah di atas ini, kalian dapat memeriksa version dari multipass yang kalian gunakan menggunakan perintah di bawah ini
+- Jika kalian sudah menjalankan beberapa perintah di atas ini, kalian dapat memeriksa version dari multipass yang kalian gunakan menggunakan perintah di bawah ini.
 
   ```shell
   multipass version
@@ -66,7 +71,7 @@ Untuk Melakukan instalasi multipass kalian dapat menggunakan beberapa perintah d
 
   <center>
   <img alt="image1" src={useBaseUrl('img/docs/m3.png')} height="350px"/>
-  </center>  
+  </center>
 
 - Kalian juga dapat melakukan customisasi virtual machine yang ingin kalian buat. Contoh seperti gambar di bawah ini.
 
@@ -78,7 +83,7 @@ Untuk Melakukan instalasi multipass kalian dapat menggunakan beberapa perintah d
   <img alt="image1" src={useBaseUrl('img/docs/m4.png')} height="350px"/>
   </center>
 
-  keterangan : perintah di atas ini adalah suatu perintah untuk membuat virtual machine dengan cpu 1 core serta menggunakan memory sebesar 1Gb.
+  **keterangan :** perintah di atas ini adalah suatu perintah untuk membuat virtual machine dengan cpu 1 core serta menggunakan memory sebesar 1Gb.
 
 - Untuk melihat virtual machine dan IP yang digunakan dari virtual machine yang kalian buat, kalian dapat menggunakan perintah di bawah ini.
 
@@ -114,8 +119,8 @@ Untuk Melakukan instalasi multipass kalian dapat menggunakan beberapa perintah d
   <img alt="image1" src={useBaseUrl('img/docs/m7.png')} height="350px"/>
   </center>
 
-- Selanjutnya ini adalah cara untuk menghentikan Virtual machine yang sudah kalian buat
-  
+- Selanjutnya ini adalah cara untuk menghentikan Virtual machine yang sudah kalian buat.
+
   ```shell
   multipass stop (Your server name)
   ```
@@ -124,7 +129,7 @@ Untuk Melakukan instalasi multipass kalian dapat menggunakan beberapa perintah d
   <img alt="image1" src={useBaseUrl('img/docs/m8.png')} height="350px"/>
   </center>
 
-- Lalu jika kalian ingin menjalankan kembali virtual machine yang sudah kalian hentikan, kalian dapat menggunakan perintah berikut ini
+- Lalu jika kalian ingin menjalankan kembali virtual machine yang sudah kalian hentikan, kalian dapat menggunakan perintah berikut ini.
 
   ```shell
   multipass start (Your server name)
@@ -134,7 +139,7 @@ Untuk Melakukan instalasi multipass kalian dapat menggunakan beberapa perintah d
   <img alt="image1" src={useBaseUrl('img/docs/m9.png')} height="350px"/>
   </center>
 
-- Selanjutnya perintah di bawah ini adalah perintah untuk mengahapus virtual machine yang sudah kalian buat
+- Selanjutnya perintah di bawah ini adalah perintah untuk mengahapus virtual machine yang sudah kalian buat.
 
   ```shell
   multipass delete (Your server name)
@@ -144,7 +149,7 @@ Untuk Melakukan instalasi multipass kalian dapat menggunakan beberapa perintah d
   <img alt="image1" src={useBaseUrl('img/docs/m10.png')} height="350px"/>
   </center>
 
-- Kalian juga bisa menghapus server kalian yang sudah tidak terpakai, untuk melakukan hal tersebut kalian dapat menggunakan perintah di bawah ini
+- Kalian juga bisa menghapus server kalian yang sudah tidak terpakai, untuk melakukan hal tersebut kalian dapat menggunakan perintah di bawah ini.
 
   ```shell
   multipass purge
@@ -154,7 +159,7 @@ Untuk Melakukan instalasi multipass kalian dapat menggunakan beberapa perintah d
   <img alt="image1" src={useBaseUrl('img/docs/m11.png')} height="350px"/>
   </center>
 
-- Untuk memeriksa informasi dari multipass server kalian, kalian dapat menggunakan perintah di bawah ini
+- Untuk memeriksa informasi dari multipass server kalian, kalian dapat menggunakan perintah di bawah ini.
 
   ```shell
   multipass info (Your name server)
@@ -164,7 +169,7 @@ Untuk Melakukan instalasi multipass kalian dapat menggunakan beberapa perintah d
   <img alt="image1" src={useBaseUrl('img/docs/m12.png')} height="350px"/>
   </center>
 
-- Kalian juga dapat meng-alokasikan local directory/file kalian ke dalam server. Untuk melakukankannya kalian dapat menggunakan perintah di bawah ini
+- Kalian juga dapat meng-alokasikan local directory/file kalian ke dalam server. Untuk melakukankannya kalian dapat menggunakan perintah di bawah ini.
 
   ```shell
   multipass mount (file/directory name) (name server):/home/ubuntu/(location)
@@ -172,9 +177,9 @@ Untuk Melakukan instalasi multipass kalian dapat menggunakan beberapa perintah d
 
   <center>
   <img alt="image1" src={useBaseUrl('img/docs/m13.png')} height="350px"/>
-  </center>  
+  </center>
 
-- Kalian juga dapat memulihkan server yang sudah di hapus. Untuk melakukannya kalian dapat menggunakan perintah dibawah ini
+- Kalian juga dapat memulihkan server yang sudah di hapus. Untuk melakukannya kalian dapat menggunakan perintah dibawah ini.
 
   ```shell
   multipass recover (Your server name)
@@ -183,4 +188,3 @@ Untuk Melakukan instalasi multipass kalian dapat menggunakan beberapa perintah d
   <center>
   <img alt="image1" src={useBaseUrl('img/docs/m14.png')} height="350px"/>
   </center>
-

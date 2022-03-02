@@ -6,7 +6,7 @@ sidebar_position: 3
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-Sekarang kita akan mencoba untuk melakukan instalasi ansible. Untuk langkah-langkah nya kalian dapat mengikuti beberapa perintah di bawah ini
+Sekarang kita akan mencoba untuk melakukan instalasi ansible. Untuk langkah-langkah nya kalian dapat mengikuti beberapa perintah di bawah ini :
 
 :::caution
 Lakukan Instalasi pada local server kalian
@@ -51,4 +51,3 @@ ansible --version
   <center>
   <img alt="image1" src={useBaseUrl('img/docs/ans5.png')} height="400px"/>
   </center>
-

@@ -2,51 +2,53 @@
 sidebar_position: 5
 ---
 
-# 5. Ansible Playbook 
+# 5. Ansible Playbook
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 **Ansible playbook** merupakan kumpulan role yang dijalankan untuk melakukan konfigurasi pada sebuah server atau hal-hal lainnya. Dengan kata lain, **ansible-playbook** ini memudahkan kita dalam memanajemen server-server atau memudahkan kita melakukan hal yang berulang-ulang.
 
-## 5.1 Make Ansible-Playbook Configuration 
-- Sekarang kita coba untuk membuat file configuration untuk menjalankan web.server `nginx` 
+## 5.1 Make Ansible-Playbook Configuration
+
+- Sekarang kita coba untuk membuat file configuration untuk menjalankan web.server `nginx`
 
   :::info
-  Jika kalian ingin membuat file configuration untuk ansible-playbook kalian harus membuat sebuah file yang ber-extensikan `yaml`
+  Jika kalian ingin membuat file configuration untuk ansible-playbook kalian harus membuat sebuah file yang ber-extensikan `yaml`.
   :::
 
 ### 1. Nginx
 
-  ```bash
-  nano nginx.yml
-  ```
+```bash
+nano nginx.yml
+```
 
-  ```bash
-  - hosts: (destination-server)
-    become: true
-    tasks:
-    - name: (name of service)
-      apt:
-        name:
-          - nginx
-        state: latest
+```bash
+- hosts: (destination-server)
+  become: true
+  tasks:
+  - name: (name of service)
+    apt:
+      name:
+        - nginx
+      state: latest
 
-  ```
-  
-  keterangan : 
-  - Hosts adalah lokasi dimana konfigurasi ansible akan di jalankan
-  - become adalah memungkinkan Anda untuk 'menjadi' pengguna lain, berbeda dari pengguna yang masuk ke mesin (remote user)
-  - tasks adalah tugas apa yang akan di jalankan
-  - name adalah nama dari tugas yang ingin di jalankan (contoh `install nginx`)
-  - apt adalah package manager
-  - name adalah aplikasi apa yang ingin di install (contoh `nginx, git`)
-  - state adalah version dari aplikasi yang akan di install
-  
+```
+
+**keterangan :**
+
+- Hosts adalah lokasi dimana konfigurasi `ansible` akan di jalankan
+- become adalah memungkinkan Anda untuk 'menjadi' pengguna lain, berbeda dari pengguna yang masuk ke mesin (remote user)
+- tasks adalah tugas apa yang akan di jalankan
+- name adalah nama dari tugas yang ingin di jalankan (contoh `install nginx`)
+- apt adalah package manager
+- name adalah aplikasi apa yang ingin di install (contoh `nginx, git`)
+- state adalah version dari aplikasi yang akan di install
+
   <center>
   <img alt="image1" src={useBaseUrl('img/docs/ans13.png')} height="400px"/>
   </center>
 
-- Jika kalian telah selesai untuk membuat file konfigurasi, tahapan selanjutnya adalah kalian coba cek apakah konfigurasi yang telah kalian buat itu sudah benar atau tidak menggunakan perintah berikut ini
+- Jika kalian telah selesai untuk membuat file konfigurasi, tahapan selanjutnya adalah kalian coba cek apakah konfigurasi yang telah kalian buat sudah sesuai atau belum dengan menggunakan perintah berikut ini :
 
   ```bash
   ansible-playbook --syntax-check (name file)
@@ -54,9 +56,9 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
   <center>
   <img alt="image1" src={useBaseUrl('img/docs/ans14.png')} height="400px"/>
-  </center> 
+  </center>
 
-  keterangan : jika muncul notifikasi seperti gambar di atas ini berati konfigurasi kalian berhasil dan tidak ada eror
+  **keterangan :** jika muncul notifikasi seperti gambar di atas ini berati konfigurasi kalian berhasil dan tidak ada eror
 
 - Sekarang kita coba jalankan file konfigurasi yang telah kita buat menggunakan `ansible-playbook`
 
@@ -74,69 +76,68 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
   http://10.206.130.236
 
-
   <center>
   <img alt="image1" src={useBaseUrl('img/docs/ans16.png')} height="400px"/>
   </center>
 
-
 ### 2. Install Docker
 
-  ```bash
-  nano Docker.yml
-  ```
+```bash
+nano Docker.yml
+```
 
-  ```bash
-  - hosts: all
-    become: true
-    tasks:
-    - name: update
-      apt:
-        update_cache: yes
+```bash
+- hosts: all
+  become: true
+  tasks:
+  - name: update
+    apt:
+      update_cache: yes
 
-    - name: upgrade
-      apt:
-        upgrade: dist
+  - name: upgrade
+    apt:
+      upgrade: dist
 
-    - name: install docker dependencies
-      apt:
-        name:
-          - ca-certificates
-          - curl
-          - gnupg
-          - lsb-release
+  - name: install docker dependencies
+    apt:
+      name:
+        - ca-certificates
+        - curl
+        - gnupg
+        - lsb-release
 
-    - name: add docker gpg key
-      apt_key:
-         url: https://download.docker.com/linux/ubuntu/gpg
+  - name: add docker gpg key
+    apt_key:
+       url: https://download.docker.com/linux/ubuntu/gpg
 
-    - name: add docker repository
-      apt_repository:
-        repo: deb https://download.docker.com/linux/ubuntu focal stable
+  - name: add docker repository
+    apt_repository:
+      repo: deb https://download.docker.com/linux/ubuntu focal stable
 
-    - name: install docker
-      apt:
-        name:
-          - docker-ce
-          - docker-ce-cli
-          - containerd.io
+  - name: install docker
+    apt:
+      name:
+        - docker-ce
+        - docker-ce-cli
+        - containerd.io
 
-    - name: update
-      shell: sudo apt update
-  
-    - name: install docker-compose
-      shell: sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker->
+  - name: update
+    shell: sudo apt update
 
-    - name: set permission for docker
-      shell: sudo chmod +x /usr/local/bin/docker-compose
+  - name: install docker-compose
+    shell: sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker->
 
-    - name: setup docker command without sudo
-      shell: sudo usermod -aG docker ubuntu
-  ```
+  - name: set permission for docker
+    shell: sudo chmod +x /usr/local/bin/docker-compose
 
-  keterangan:
-  - shell adalah perintah untuk mengeksekusi sama seperti saat kalian berada di terminal
-  
+  - name: setup docker command without sudo
+    shell: sudo usermod -aG docker ubuntu
+```
+
+**keterangan:**
+
+- shell adalah perintah untuk mengeksekusi sama seperti saat kalian berada di terminal.
+
   <center>
   <img alt="image1" src={useBaseUrl('img/docs/ans17.png')} height="300px"/>
   </center>
@@ -145,18 +146,19 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
   <img alt="image1" src={useBaseUrl('img/docs/ans18.png')} height="300px"/>
   </center>
 
-- Sekarang kita coba cek apakah file konfigurasi untuk install `docker` yang telah kita buat apakah ada eror atau tidak
+- Sekarang kita coba cek apakah file konfigurasi untuk installasi `docker` yang telah kita buat apakah ada eror atau tidak.
 
   ```bash
   ansible-playbook --syntax-check (name file)
   ```
+
   <center>
   <img alt="image1" src={useBaseUrl('img/docs/ans19.png')} height="400px"/>
   </center>
 
-  keterangan : jika muncul notifikasi seperti gambar di atas ini berati konfigurasi kalian berhasil dan tidak ada eror
+  **keterangan :** jika muncul notifikasi seperti gambar di atas ini berati konfigurasi kalian berhasil dan tidak ada eror.
 
-- Sekarang tinggal kita jalankan file konfigurasi yang telah kita buat menggunakan `ansible playbook`
+- Sekarang tinggal kita jalankan file konfigurasi yang telah kita buat menggunakan `ansible playbook`.
 
   ```bash
   ansible-playbook (name file)
@@ -166,67 +168,70 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
   <img alt="image1" src={useBaseUrl('img/docs/ans20.png')} height="420px"/>
   </center>
 
-- Jika muncul notifikasi seperti gambar di atas maka kalian telah berhasil melakukan installasi `docker` menggunakan `ansible`
-- Sekarang kita coba untuk masuk ke dalam server kita lalu kita cek apakah `docker` telah terinstall
+- Jika muncul notifikasi seperti gambar di atas maka kalian telah berhasil melakukan installasi `docker` menggunakan `ansible`.
+- Sekarang kita coba untuk masuk ke dalam server kita lalu kita cek apakah `docker` telah terinstall.
 
   <center>
   <img alt="image1" src={useBaseUrl('img/docs/ans21.png')} height="400px"/>
   </center>
 
 ### 3. Create User
-  
-  ```bash
-  nano user.yml
-  ```
 
-  ```bash
-  - hosts: all
-    become: true
-    tasks:
-      - name: Create user
-        user:
-          name: alvin
-          password: "$$6$1iAc4k8IMunxbIyj$p9QyQx7mSBCnIkt67PEpZFK5PzvIn1AA1AkV9Vu/ZDKplyb1gr08mp.7XsnjUHlt2P31lg.fV1SRnw1Au/Css1"
-          groups: sudo
-          state: present
-          shell: /bin/bash
-          system: no
-          createhome: yes
-          home: /home/alvin
+```bash
+nano user.yml
+```
 
-      - name: change PasswordAuthentication
-        lineinfile:
-          path: /etc/ssh/sshd_config
-          regexp: 'PasswordAuthentication no'
-          line: PasswordAuthentication yes
+```bash
+- hosts: all
+  become: true
+  tasks:
+    - name: Create user
+      user:
+        name: alvin
+        password: "$$6$1iAc4k8IMunxbIyj$p9QyQx7mSBCnIkt67PEpZFK5PzvIn1AA1AkV9Vu/ZDKplyb1gr08mp.7XsnjUHlt2P31lg.fV1SRnw1Au/Css1"
+        groups: sudo
+        state: present
+        shell: /bin/bash
+        system: no
+        createhome: yes
+        home: /home/alvin
 
-      - name: reload sshd
-        systemd:
-          name: sshd
-          state: reloaded 
-  ```
+    - name: change PasswordAuthentication
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: 'PasswordAuthentication no'
+        line: PasswordAuthentication yes
+
+    - name: reload sshd
+      systemd:
+        name: sshd
+        state: reloaded
+```
 
   <center>
   <img alt="image1" src={useBaseUrl('img/docs/ans22.png')} height="400px"/>
   </center>
 
 :::info
-  Untuk membuat password kalian dapat menggunakan `mkpasswd` untuk installasi `mkpasswd` kalian dapat menggunakan perintah dibawah ini
-  ```bash
-  sudo apt update
-  ```
-  ```bash
-  sudo apt install whois
-  ```
-  
-  Jalankan perintah dibawah ini untuk melakukan generate password jika muncul notifikasi password kalian tinggal masukkan password yang kalian inginkan jika sudah tekan saja `enter`, setelah itu copy password yang muncul dan paste ke dalam file konfigurasi `ansible` untuk membuat user
+Untuk membuat password kalian dapat menggunakan `mkpasswd` untuk installasi `mkpasswd` kalian dapat menggunakan perintah dibawah ini :
 
-  ```bash
-  mkpasswd --method=sha-512
-  ```
+```bash
+sudo apt update
+```
+
+```bash
+sudo apt install whois
+```
+
+Jalankan perintah dibawah ini untuk melakukan generate password jika muncul notifikasi password kalian tinggal masukkan password yang kalian inginkan jika sudah tekan saja `enter`, setelah itu copy password yang muncul dan paste ke dalam file konfigurasi `ansible` untuk membuat user.
+
+```bash
+mkpasswd --method=sha-512
+```
+
 :::
 
-- Sekarang kita coba cek apakah file konfigurasi untuk membuat `user` yang telah kita buat apakah ada eror atau tidak
+- Sekarang kita coba cek apakah file konfigurasi untuk membuat `user` yang telah kita buat apakah ada eror atau tidak.
 
   ```bash
   ansible-playbook --syntax-check (name file)
@@ -236,7 +241,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
   <img alt="image1" src={useBaseUrl('img/docs/ans23.png')} height="400px"/>
   </center>
 
-- Sekarang tinggal kita jalankan file konfigurasi yang telah kita buat menggunakan `ansible playbook`
+- Sekarang tinggal kita jalankan file konfigurasi yang telah kita buat menggunakan `ansible playbook`.
 
   ```bash
   ansible-playbook (name file)
@@ -246,18 +251,18 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
   <img alt="image1" src={useBaseUrl('img/docs/ans24.png')} height="400px"/>
   </center>
 
-- Jika muncul notifikasi seperti gambar di atas, berarti kalian telah berhasil untuk membuat user di server kalian
-- Sekarang kita coba cek ke dalam server kita apakah sudah terbuat `user` nya dan kita coba install `nginx` untuk memeriksa apakah user yang telah kita buat dapat menggunakan perintah `sudo`
+- Jika muncul notifikasi seperti gambar di atas, berarti kalian telah berhasil untuk membuat user di server kalian.
+- Sekarang kita coba cek ke dalam server kita apakah sudah terbuat `user` nya dan kita coba install `nginx` untuk memeriksa apakah user yang telah kita buat dapat menggunakan perintah `sudo`.
 
   <center>
   <img alt="image1" src={useBaseUrl('img/docs/ans25.png')} height="400px"/>
   </center>
 
-### 4. Monitoring 
+### 4. Monitoring
 
-- Sekarang kita akan coba untuk membuat file konfigurasi `ansible` untuk menjalankan instalasi monitoring yang telah kita pelajari sebelumnya
+- Sekarang kita akan coba untuk membuat file konfigurasi `ansible` untuk menjalankan instalasi monitoring yang telah kita pelajari sebelumnya.
 
-- Pertama tama kita buat file terlebih dahulu yang berisikan service-service yang diperlukan oleh monitoring kita
+- Pertama tama kita buat file terlebih dahulu yang berisikan service-service yang diperlukan oleh monitoring kita.
 
   ```bash
   mkdir files
@@ -267,7 +272,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
   nano node-exporter.service
   ```
 
-    **Node Exporter**: [Here](/Monitoring-Server/Node-exporter)
+  **Node Exporter**: [Here](/Monitoring-Server/Node-exporter)
 
   <center>
   <img alt="image1" src={useBaseUrl('img/docs/ans26.png')} height="400px"/>
@@ -277,7 +282,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
   nano prometheus.service
   ```
 
-     **Prometheus**: [Here](/Monitoring-Server/Prometheus)
+  **Prometheus**: [Here](/Monitoring-Server/Prometheus)
 
   <center>
   <img alt="image1" src={useBaseUrl('img/docs/ans27.png')} height="400px"/>
@@ -285,9 +290,9 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
   ```bash
   nano prometheus.yml
-  ``` 
+  ```
 
-     **Prometheus**: [Here](/Monitoring-Server/Prometheus) 
+  **Prometheus**: [Here](/Monitoring-Server/Prometheus)
 
   <center>
   <img alt="image1" src={useBaseUrl('img/docs/ans28.png')} height="400px"/>
@@ -315,7 +320,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
           executable: /bin/bash
 
       - name: "Create service for node exporter"
-        copy: 
+        copy:
           src: node-exporter.service
           dest: /etc/systemd/system/node-exporter.service
 
@@ -330,7 +335,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
           executable: /bin/bash
 
       - name: "Add node exporter to prometheus"
-        copy: 
+        copy:
           src: prometheus.yml
           dest: /etc/prometheus/prometheus.yml
 
@@ -340,7 +345,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
           executable: /bin/bash
 
       - name: "Create service for prometheus"
-        copy: 
+        copy:
           src: prometheus.service
           dest: /etc/systemd/system/prometheus.service
 
@@ -360,9 +365,12 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
           executable: /bin/bash
   ```
 
-  keterangan : 
+  **keterangan :**
+
   - src adalah source,jadi dia mengambil data dari file yg dimasukkan pada `src`
-  - dest adalah destination, di bagian ini kita tinggal memasukkan lokasi dari data yang telah kita buat ingin kita masukkan kemana 
+  - dest adalah destination, di bagian ini kita tinggal memasukkan lokasi dari data yang telah kita buat ingin kita masukkan kemana
+
+  <br></br>
 
   <center>
   <img alt="image1" src={useBaseUrl('img/docs/ans29.png')} height="400px"/>

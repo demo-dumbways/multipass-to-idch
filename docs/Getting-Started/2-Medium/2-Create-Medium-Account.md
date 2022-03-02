@@ -10,9 +10,9 @@ Step by step penggunaan **Medium** ini akan digunakan untuk mengerjakan tugas mi
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-Disini kita akan melakukan registasi untuk pembuatan akun **medium**terlebih dahulu. kalian dapat mengikuti langkah-langkah dibawah ini.
+Disini kita akan melakukan registasi untuk pembuatan akun **medium** terlebih dahulu. kalian dapat mengikuti langkah-langkah dibawah ini.
 
-- Kalian `klik` link dibawah ini.
+- Untuk menuju ke Halaman medium silakan `klik` link dibawah ini.
 
 **LINK : [Registration](https://medium.com/)**
 
@@ -28,7 +28,6 @@ Disini kita akan melakukan registasi untuk pembuatan akun **medium**terlebih dah
   <center>
   <img alt="image1" src={useBaseUrl('img/docs/medium3.jpeg')} height="300px"/>
   </center>
-
 
 - Setalh itu kalian dapat memilih kalian ingin membuat akun **medium** dengan menggunakan apa, disini kita coba untuk menggunakan **google** saja.
 - Kalian dapat mengeklik bagian `Sign up with Google`.

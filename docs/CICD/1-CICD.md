@@ -8,9 +8,10 @@ sidebar_position: 1
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-CI/CD atau **Continuous Integration** dan **Continuous Deployment** merupakan metode untuk mengirimkan perubahan code secara terus menerus hingga aplikasi dapat release ke publik dengan otomatis.
+CI/CD atau **Continuous Integration** dan **Continuous Deployment** merupakan metode untuk mengirimkan perubahan code secara berkelanjutan hingga aplikasi dapat release atau terealisasi ke publik secara otomatis.
 
 - **Continuous integration** merupakan proses otomatis untuk memastikan semua code sudah berjalan dengan baik, jika terjadi error maka proses tersebut akan diulangi dari awal hingga code tersebut sudah tidak ada error.
+
 - **Continuous deployment** merupakan proses otomatis agar aplikasi yang telah siap di kirim ke server hingga aplikasi dapat diakses secara public.
 
 ## 1.2 Kenapa menggunakan CI/CD
