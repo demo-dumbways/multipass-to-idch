@@ -25,6 +25,7 @@ Bagi kebanyakan orang cloud computing sangat diminati karena beberapa alasan :
 
 layanan cloud yang pada dasarnya adalah suatu server fisik dan juga komputer virtual. Setiap penyedia layanan IaaS akan menyediakan resource cloud, seperti storage, jaringan, dan juga ruang data. contohnya adalah :
 
+- IdCloudHost.
 - AWS (Amazon Web Service).
 - Digital Ocean.
 - Oracle Cloud.

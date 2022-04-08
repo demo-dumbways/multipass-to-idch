@@ -2,189 +2,94 @@
 sidebar_position: 3
 ---
 
-# 3. Multipass
+# 3. IdCloudHost
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-**Multipass** adalah sebuah tools yang dapat memudahkan Anda untuk menjalankan versi Ubuntu yang diperlukan secara virtual. Multipass dirancang untuk pengembang yang menginginkan lingkungan Ubuntu dengan satu perintah.
+**IdCloudhost** adalah sebuah platoform as a service yang sangat populer di indonesia. dan mempunyai banyak sekali fitur yang dapat kita gunakan untuk membuat suatu server maupun melakukan instalasi suatu aplikasi ke dalam server kita dengan menggunakan fitur **App Catalog**. 
 
-Multipass dapat berjalan seperti membuat cloud computing, tapi pada local komputer Anda seperti :
+## Kenapa menggunakan IdCloudhost?
+Karena dengan menggunakan IdCloudhost ini kita dapat membuat suatu server dengan sangat mudah dan kita juga dapat menggunakan platform IdCloudhost ini seperti contoh dibawah ini:
 
 - Membuat server baru
 - Mengatur spesifikasi server yang dibuat
-- Mengatur keamanan server
 - Mengatur load balance
+- Melakukan SetUp Floating IP
+- Membuat Virtual Private Cloud
 - Dan sebagainya
 
-Kebutuhan minimum :
+## 3.1 Registration
+Untuk menggunakan platform dari **IdCloudhost** pertama-tama kalian harus melakukan registrasi terlebih dahulu. Jika kalian telah melakukan registrasi alangkah baiknya kalian langsung melakukan konfirmasi kepada mentor kalian agar kalian dapat mengakses IdCloudhost dengan menggunakan user yang sudah disediakan oleh Dumbways.id
 
-- CPU i3 - 3115C (mendukung virtualisasi)
-- Memory 8 Gb
-- Sistem operasi linux ubuntu 18.04
+- [Registration](https://console.idcloudhost.com/hub/login#signup)
 
-## Kenapa Menggunakan Multipass?
+## 3.2 Create Server With IdCloudhost
 
-Karena `Multipass` lebih ringan dibandingkan dengan vmware, serta sistem yang digunakanpun berbasis command line. Sedangkan untuk `vmware` berbasis gui dimana memakan lebih banyak resource ketika dijalankan.
-
-## 3.1 Multipass Installation
-
-Untuk Melakukan instalasi multipass kalian dapat menggunakan beberapa perintah dibawah ini.
-
-- Pertama-tama kalian harus melakukan installasi package manager ubuntu yaitu `snap`.
-
-  ```shell
-  sudo apt install snapd
-  ```
+- Pertama-tama lakukan login pada platform IDCH (IdCloudhost)
 
   <center>
-  <img alt="image1" src={useBaseUrl('img/docs/m1.png')} height="350px"/>
+  <img alt="image1" src={useBaseUrl('img/docs/cloud1.png')} />
   </center>
 
-- Tahapan selanjutnya adalah kita akan melakukan installasi `multipass` menggunakan package manager `snap` yang sudah kalian intall sebelumnya.
-- Untuk melakukan installasi multipass kalian dapat menggunakan perintah dibawah ini.
-
-  ```shell
-  sudo snap install multipass
-  ```
+- Setelah itu masuk ke dalam profile kalian.
+- Lalu Accept invitation yang ada.
 
   <center>
-  <img alt="image1" src={useBaseUrl('img/docs/m2.png')} height="350px"/>
+  <img alt="image1" src={useBaseUrl('img/docs/cloud2.png')} />
   </center>
 
-- Jika kalian sudah menjalankan beberapa perintah di atas ini, kalian dapat memeriksa version dari multipass yang kalian gunakan menggunakan perintah di bawah ini.
-
-  ```shell
-  multipass version
-  ```
+- Jika sudah tekan `access user`.
 
   <center>
-  <img alt="image1" src={useBaseUrl('img/docs/m+.png')} height="350px"/>
+  <img alt="image1" src={useBaseUrl('img/docs/cloud3.png')} />
   </center>
 
-## 3.2 Multipass Command
-
-- Untuk membuat suatu virtual machine kalian dapat menggunakan perintah di bawah ini.
-
-  ```shell
-  multipass launch --name (your-name)
-  ```
-
+- Lalu nanti kalian akan secara langsung di arahkan ke user yang telah kami sediakan.
+- Sekarang kita akan coba untuk membuat server. Kalian dapat klik menu pada bagian `create virtual machine`
+  
   <center>
-  <img alt="image1" src={useBaseUrl('img/docs/m3.png')} height="350px"/>
+  <img alt="image1" src={useBaseUrl('img/docs/cloud4.png')} />
   </center>
 
-- Kalian juga dapat melakukan customisasi virtual machine yang ingin kalian buat. Contoh seperti gambar di bawah ini.
-
-  ```shell
-  multipass launch --name (your-name) --cpus 1 --mem 1G
-  ```
+- Jika sudah kalian akan di alihkan ke halaman seperti di bawah ini, nah disini kalian dapat memilih ingin menggunakan Operating System apa, tapi disini kita coba untuk menggunakan Ubuntu 21.04.
 
   <center>
-  <img alt="image1" src={useBaseUrl('img/docs/m4.png')} height="350px"/>
+  <img alt="image1" src={useBaseUrl('img/docs/cloud5.png')} />
   </center>
 
-  **keterangan :** perintah di atas ini adalah suatu perintah untuk membuat virtual machine dengan cpu 1 core serta menggunakan memory sebesar 1Gb.
-
-- Untuk melihat virtual machine dan IP yang digunakan dari virtual machine yang kalian buat, kalian dapat menggunakan perintah di bawah ini.
-
-  ```shell
-  multipass ls
-  ```
+- Kita juga dapat memilih spesifikasi server apa yang ingin kita gunakan, kita juga dapat melakukan customisasi spesifikasi server yang kita inginkan sesuai yang kita butuhkan.
+- Untuk location data center kalian bebas ingin menggunakan dimana, tapi disini kita akan pakai defaultnya saja yang berlokasi di South-Jakarta
 
   <center>
-  <img alt="image1" src={useBaseUrl('img/docs/m5.png')} height="350px"/>
+  <img alt="image1" src={useBaseUrl('img/docs/cloud6.png')} />
   </center>
 
-- Kalian juga dapat menjalankan suatu perintah dari local kalian untuk di jalankan di server kalian. Contoh seperti perintah dibawah ini.
-
-  ```shell
-  multipass exec (Your server name) -- lsb_release -a
-  ```
-
-  ```shell
-  multipass exec (Your server name) -- ls -la
-  ```
+- Checklist bagian public IP agar server kalian mendapatkan IP public.
+- Untuk VPC Network kalian dapat memilih ingin menggunakan Floating IP atau VPC 
+    - Floating IP adalah dimana nantinya server yang kalian buat nanti akan mendapatkan 2 buah IP address yang bersifat Public dan Private.
+    - VPC adalah dimana server yang kalian buat hanya akan mendapatkan IP Private saja.
+- Selanjutnya kalian bisa melakukan Setup username, password, dan hostname yang kalian inginkan, Jika semua telah terasa sesuai kalian dapat klik tombol `create`. Maka server yang sudah kalian akan secara langsung melakukan build.
 
   <center>
-  <img alt="image1" src={useBaseUrl('img/docs/m6.png')} height="350px"/>
+  <img alt="image1" src={useBaseUrl('img/docs/cloud7.png')} />
   </center>
 
-- Selanjutnya untuk masuk ke dalam server yang sudah kalian buat, kalian dapat menggunakan perintah dibawah ini.
+## 3.3 SSH To Server
 
-  ```shell
-  multipass shell (Your server name)
-  ```
+- Sekarang kita akan coba masuk ke dalam server yang telah kita buat.
+- Kalian dapat pergi ke menu compute, setelah itu klik untuk melihat informasi dari server kalian.
 
   <center>
-  <img alt="image1" src={useBaseUrl('img/docs/m7.png')} height="350px"/>
+  <img alt="image1" src={useBaseUrl('img/docs/cloud8.png')} />
   </center>
 
-- Selanjutnya ini adalah cara untuk menghentikan Virtual machine yang sudah kalian buat.
+- Setelah itu copy IP Public kalian.
+- Lalu buka terminal kalian. Lalu masukan perintah seperti dibawah ini, lalu masukkan password yang telah kalian setup sebelumnya.
 
-  ```shell
-  multipass stop (Your server name)
+  ```bash
+  ssh username@youripaddress
   ```
 
   <center>
-  <img alt="image1" src={useBaseUrl('img/docs/m8.png')} height="350px"/>
-  </center>
-
-- Lalu jika kalian ingin menjalankan kembali virtual machine yang sudah kalian hentikan, kalian dapat menggunakan perintah berikut ini.
-
-  ```shell
-  multipass start (Your server name)
-  ```
-
-  <center>
-  <img alt="image1" src={useBaseUrl('img/docs/m9.png')} height="350px"/>
-  </center>
-
-- Selanjutnya perintah di bawah ini adalah perintah untuk mengahapus virtual machine yang sudah kalian buat.
-
-  ```shell
-  multipass delete (Your server name)
-  ```
-
-  <center>
-  <img alt="image1" src={useBaseUrl('img/docs/m10.png')} height="350px"/>
-  </center>
-
-- Kalian juga bisa menghapus server kalian yang sudah tidak terpakai, untuk melakukan hal tersebut kalian dapat menggunakan perintah di bawah ini.
-
-  ```shell
-  multipass purge
-  ```
-
-  <center>
-  <img alt="image1" src={useBaseUrl('img/docs/m11.png')} height="350px"/>
-  </center>
-
-- Untuk memeriksa informasi dari multipass server kalian, kalian dapat menggunakan perintah di bawah ini.
-
-  ```shell
-  multipass info (Your name server)
-  ```
-
-  <center>
-  <img alt="image1" src={useBaseUrl('img/docs/m12.png')} height="350px"/>
-  </center>
-
-- Kalian juga dapat meng-alokasikan local directory/file kalian ke dalam server. Untuk melakukankannya kalian dapat menggunakan perintah di bawah ini.
-
-  ```shell
-  multipass mount (file/directory name) (name server):/home/ubuntu/(location)
-  ```
-
-  <center>
-  <img alt="image1" src={useBaseUrl('img/docs/m13.png')} height="350px"/>
-  </center>
-
-- Kalian juga dapat memulihkan server yang sudah di hapus. Untuk melakukannya kalian dapat menggunakan perintah dibawah ini.
-
-  ```shell
-  multipass recover (Your server name)
-  ```
-
-  <center>
-  <img alt="image1" src={useBaseUrl('img/docs/m14.png')} height="350px"/>
+  <img alt="image1" src={useBaseUrl('img/docs/cloud9.png')} />
   </center>

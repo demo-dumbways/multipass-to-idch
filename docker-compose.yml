@@ -1,0 +1,8 @@
+version: '3.8'
+services:
+        ebook:
+             build: .
+             container_name: ebook
+             image: ebook2:1.0
+             ports:
+                     - 3000:3000

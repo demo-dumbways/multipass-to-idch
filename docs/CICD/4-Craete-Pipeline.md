@@ -2,13 +2,13 @@
 sidebar_position: 4
 ---
 
-# 3. Pipeline
+# 4. Pipeline
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 **Pipeline** merupakan fitur yang dimiliki oleh semua tool CI/CD, yang berguna untuk membuat daftar perintah yang harus dilakukan saat melakukan proses update aplikasi.
 
-## 3.1 Membuat Konfigurasi SSH Agent
+## 4.1 Membuat Konfigurasi SSH Agent
 
 Pastikan untuk melakukan instalasi plugin bernama **SSH Agent Plugin**, yang berguna untuk meremote server lain dan mengeksekusi perintah linux pada server tersebut. Untuk proses instalasinya dapat membuka menu **Manage Jenkins -> Manage Plugins**, kemudian cara nama plugin tersebut pada tab **Available**.
 
@@ -19,7 +19,7 @@ Pastikan untuk melakukan instalasi plugin bernama **SSH Agent Plugin**, yang ber
 
 Klik **Install without restart** untuk melakukan instalasi plugin tanpa harus merestart `Jenkins`.
 
-## 3.2 Membuat SSH Access Git dan Server
+## 4.2 Membuat SSH Access Git dan Server
 
 Tahap ini dibutuhkan untuk Jenkins agar dapat terintegrasi dengan git private dan server lain (tempat aplikasi berada). Untuk tahapan yang harus dilakukan adalah dengan membuka menu **Manage Jenkins -> Manage Credentials**.
 
@@ -64,7 +64,7 @@ Berikut adalah data yang harus di isi:
 
 Lakukan hal yang sama untuk server agar server jenkins dan server aplikasi dapat saling terhubung.
 
-## 3.3 Membuat Jenkinsfile
+## 4.3 Membuat Jenkinsfile
 
 `Jenkinsfile` merupakan file yang digunakan untuk menjalankan proses pipeline dari CI/CD, berisi tahapan yang harus diselesaikan. Berikut ini adalah bentuk `Jenkinsfile` yang akan digunakan.
 
@@ -130,7 +130,7 @@ def branch = 'main' (Ganti sesuai dengan branch repository)
 
 Kemudian push `Jenkinsfile` tersebut ke repository aplikasi.
 
-## 3.4 Membuat Jenkins Jobs
+## 4.4 Membuat Jenkins Jobs
 
 `Jenkins Jobs` merupakan konfigurasi untuk setiap aplikasi yang membutuhkan proses CI/CD, Kita dapat membuat konfigurasi tersebut sesuai dengan branch atau server yang digunakan dan akan otomatis mendeteksi ketika ada update ke branch tertentu.
 
@@ -164,7 +164,7 @@ Kemudian pada bagian **Script Path** isikan **Jenkinsfile**
   <img alt="image1" src={useBaseUrl('img/docs/jenkins-conf-10.png')} height="400px"/>
   </center>
 
-## 3.5 Membuat WebHook
+## 4.5 Membuat WebHook
 
 Agar jenkins mengetahui seluruh aktivitas yang terjadi pada repository, perlu melakukan konfigurasi webhook pada setiap repository aplikasi.
 
