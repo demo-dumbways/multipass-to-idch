@@ -20,11 +20,11 @@ Setelah mempelajari terkait materi multipass, deployment aplikasi `Node.JS` dan 
 
 ### Ketentuan
 
-- Multipass : 2 Server (1 Server Gateway, 1 Server App)
+- IdCloudHost Server (1 Gateway, 1 Server App)
 - CPU : 1 vCPU
 - Memory : 1 GB
 - Disk : 10 GB
-- Reverse Proxy: dumbways.xyz
+- Reverse Proxy: yourname.studentdumbways.my.id
 
 ## 6.2 Pengumpulan
 
@@ -35,7 +35,7 @@ Setelah mempelajari terkait materi multipass, deployment aplikasi `Node.JS` dan 
 
 Referensi:
 
-- [Medium](/Getting-Started/Medium/Medium)
+- [Medium](https://ebook.dumbways.id/do-s1-gettingstarted/Getting-Started/Medium/Medium)
 
 ## 6.3 Project Management
 
@@ -46,18 +46,18 @@ Membuat server dengan custom server, hingga melakukan proses instalasi dan konfi
 
 - [ ] Definisikan apa itu Cloud Computing menurut pemahamanmu
 - [ ] Sebutkan alasan menggunakan Multipass dibandingkan dengan Vagrant
-- [ ] Buat 2 buat server menggunakan multipass dengan ketentuan 1 vCPU, 1 GB Memory, Disk 10 GB
+- [ ] Buat 2 buah server menggunakan idcloudhost dengan ketentuan 1 vCPU, 1 GB Memory, Disk 20 GB
 - [ ] Install NVM pada salah satu server (server app)
 - [ ] Deploy aplikasi waysgallery ke server app dan jalankan menggunakan PM2
 - [ ] Install Nginx pada salah satu server (server gateway)
 - [ ] Buatlah reverse proxy pada server gateway ke server app
-- [ ] Buatlah virtual domain dengan domain dumbways.xyz
+- [ ] Setup nginx agar aplikasi dapat di akses menggunakan domain yang telah di sediakan
 ```
 
 Referensi:
 
-- [Membuat GitHub Project](/Getting-Started/Project-Management/Make-Project-Management)
-- [Manage GitHub Issue](/Getting-Started/Project-Management/Issue-Dan-Status-Project)
+- [Membuat GitHub Project](https://ebook.dumbways.id/do-s1-gettingstarted/Getting-Started/Project-Management/Make-Project-Management)
+- [Manage GitHub Issue](https://ebook.dumbways.id/do-s1-gettingstarted/Getting-Started/Project-Management/Issue-Dan-Status-Project)
 - [PM2](https://www.npmjs.com/package/pm2)
 
 ## 6.4 Diskusi

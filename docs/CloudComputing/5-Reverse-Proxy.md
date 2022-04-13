@@ -230,7 +230,7 @@ Sekarang kita coba untuk melakukan konfigurasi SSL untuk reverse proxy yang tela
 
   ```bash
   dns_cloudflare_email = "youremail@gmail.com"
-  dns_cloudflare_api_key = "a6cbf696f2016b0dbe62773a3a70ad2f38777"
+  dns_cloudflare_api_key = "a6vdf696f88916b0dbe62773a3a70ad2as2777"
   ```
 
   <center>

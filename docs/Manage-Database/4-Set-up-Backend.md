@@ -8,65 +8,13 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 Sekarang kita akan melakukan set-up aplikasi Backend `Node.JS` untuk melakukannya kalian dapat mengikuti langkah-lagkan dibawah ini.
 
-- Tahapan pertama kita memerlukan 1 buah server untuk aplikasi backend kita. Sekarang kita coba buat menggunakan server multipass.
-
-  ```shell
-  multipass launch --name (server name)
-  ```
+- Sekarang kita masuk ke dalam server yang telah kita buat di hari lalu pada saat kita belajar tentang setup frontend
 
   <center>
-  <img alt="image1" src={useBaseUrl('img/docs/bck1.png')} height="400px"/>
+  <img alt="image1" src={useBaseUrl('img/docs/cloud9.png')} />
   </center>
 
-- Selanjutnya masuk ke dalam server yang sudah kalian buat setelah itu jalankan `update` dan `upgrade` terlebih dahulu untuk memastikan server selalu di dalam versi terbaru.
-
-  ```shell
-  multipass shell (server name)
-  ```
-
-  <center>
-  <img alt="image1" src={useBaseUrl('img/docs/bck2.png')} height="400px"/>
-  </center>
-
-  ```shell
-  sudo apt update; sudo apt upgrade
-  ```
-
-  :::info
-  After this operation, 192 MB of additional disk space will be used.
-  Do you want to continue? [Y/n] y
-  :::
-
-  <center>
-  <img alt="image1" src={useBaseUrl('img/docs/bck3.png')} height="400px"/>
-  </center>
-
-- Setelah update dan upgrade telah selesai. Sekarang kita akan melakukan instalasi `Node.JS` di server kita menggunakan `nvm`.
-- `nvm` merupakan singkatan dari **Node Version Manager**. `nvm` adalah sebuah program yang akan membantu kita untuk menggunakan lebih dari satu versi Nodejs di dalam satu komputer. Untuk melakukan installasi `Node.JS` menggunakan `nvm` kalian dapat menggunakan perintah berikut :
-
-  ```shell
-  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
-  ```
-
-  <center>
-  <img alt="image1" src={useBaseUrl('img/docs/bck4.png')} height="400px"/>
-  </center>
-
-  ```shell
-  exec bash
-  ```
-
-  ```shell
-  nvm install 14
-  ```
-
-  <center>
-  <img alt="image1" src={useBaseUrl('img/docs/bck5.png')} height="400px"/>
-  </center>
-
-  keterangan : perintah di atas berguna untuk menginstall **node.js** dengan versi 14. Jika kalian ingin menggunakan **node.js** dengan`version 16`, maka Jalankan perintah `nvm install 16`.
-
-- Jika kalian sudah menjalankan beberapa perintah di atas, kalian dapat memeriksa `node.js` kalian menggunakan perintah berikut ini.
+- Karena kemarin kita telah melakukan instalasi `node.js`, maka sekarang kita sudah tidak perlu untuk melakukan installasinya kembali, untuk make sure apakah `node.js` telah terinstall gunakan perintah di bawah ini
 
   ```shell
   node -v
@@ -80,7 +28,7 @@ Sekarang kita akan melakukan set-up aplikasi Backend `Node.JS` untuk melakukanny
   <img alt="image1" src={useBaseUrl('img/docs/bck6.png')} height="400px"/>
   </center>
 
-- Sekarang kita akan menjalankan aplikasi `Node.JS`. Untuk menjalankanya kalian dapat menggunakan perintah dibawah ini.
+- Sekarang kita akan menjalankan aplikasi backend. Untuk menjalankanya kalian dapat menggunakan perintah dibawah ini.
 
   ```shell
   git clone https://github.com/dumbwaysdev/dumbplay-backend.git

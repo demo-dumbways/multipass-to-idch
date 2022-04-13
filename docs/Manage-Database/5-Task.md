@@ -19,10 +19,10 @@ Setelah mempelajari deployment aplikasi backend dan database, maka silakan buat 
 </center>
 
 ### Ketentuan
-- Server App   : Gunakan untuk deploy aplikasi backend dan database MySQL
+- Server App   : Gunakan untuk deploy aplikasi frontend backend dan database MySQL
 - Database user: waysgallery
 - Database pass: waysgallery123
-- Reverse Proxy: api.dumbways.xyz
+- Reverse Proxy: api.yourname.studentdumbways.my.id
 
 ## 5.2 Pengumpulan
 1. Pastikan untuk mengerjakan tugas mingguan pada medium.com.
@@ -31,7 +31,7 @@ Setelah mempelajari deployment aplikasi backend dan database, maka silakan buat 
 4. Clone Aplikasi berikut ini https://github.com/dumbwaysdev/waysgallery-backend.git
 
 Referensi:
-- [Medium](/Getting-Started/Medium/Medium)
+- [Medium](https://ebook.dumbways.id/do-s1-gettingstarted/Getting-Started/Medium/Medium)
 
 ## 5.3 Project Management
 Tambahkan deskripsi berikut ke dalam kanban pada project management Anda
@@ -44,16 +44,17 @@ Konfigurasi aplikasi backend dan database hingga proses migrasi database dengan 
 - [ ] Buat sebuah user baru untuk database waysgallery dengan ketentuan seperti di atas
 - [ ] Deploy aplikasi waysgallery backend ke server app dan jalankan menggunakan PM2
 - [ ] Buatlah reverse proxy pada server gateway ke server app backend yang sudah di setup
-- [ ] Buatlah virtual domain dengan domain api.dumbways.xyz
-- [ ] Ubah konfigurasi aplikasi frontend agar mengarah ke aplikasi backend
+- [ ] Buatlah virtual domain dengan domain api.yourname.studentdumbways.my.id
+- [ ] Ubah konfigurasi aplikasi frontend agar mengarah ke aplikasi backend 
 - [ ] Ubah konfigurasi aplikasi backend agar mengarah ke aplikasi database
 - [ ] Install sequelize untuk migrate database tersebut
 - [ ] Aplikasi waysgallery dapat digunakan hingga proses register dan login
 ```
 
 Referensi:
-- [Membuat GitHub Project](/Getting-Started/Project-Management/Make-Project-Management)
-- [Manage GitHub Issue](/Getting-Started/Project-Management/Issue-Dan-Status-Project)
+
+- [Membuat GitHub Project](https://ebook.dumbways.id/do-s1-gettingstarted/Getting-Started/Project-Management/Make-Project-Management)
+- [Manage GitHub Issue](https://ebook.dumbways.id/do-s1-gettingstarted/Getting-Started/Project-Management/Issue-Dan-Status-Project)
 - [PM2](https://www.npmjs.com/package/pm2)
 
 ## 5.4 Diskusi

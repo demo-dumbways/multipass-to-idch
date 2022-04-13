@@ -10,29 +10,11 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## 3.1 MySQL Installation
 
-- Tahapan pertama yang harus kalian lakukan adalah membuat satu buah server untuk database menggunakan multipass.
+- Tahapan pertama yang harus kita lakukan adalah membuat satu buah server untuk database terlebih dahulu. Untuk membuat server kalian dapat mengikuti step by step di link berikut ini 
 
-  ```shell
-  multipass launch --name (name)
-  ```
-
-  <center>
-  <img alt="image1" src={useBaseUrl('img/docs/d1.png')} height="400px"/>
-  </center>
-
-  <center>
-  <img alt="image1" src={useBaseUrl('img/docs/d2.png')} height="400px"/>
-  </center>
+  `Link` = [Here](https://ebook.dumbways.id/do-s2-introduction/CloudComputing/Cloud-Computing-With-IDCH)  
 
 - Selanjutnya jalankan perintah dibawah ini untuk melakukan instalasi mysql-server.
-
-  ```shell
-  sudo apt update; sudo apt upgrade
-  ```
-
-  <center>
-  <img alt="image1" src={useBaseUrl('img/docs/d3.png')} height="400px"/>
-  </center>
 
   ```shell
   sudo apt install mysql*
@@ -52,7 +34,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
   Sesuaikan jawaban dari pertanyaan yang diajukan oleh mysql.
   :::
 
-````bash
+```bash
   - Press y|Y for Yes, any other key for No: y
   - Please enter 0 = LOW, 1 = MEDIUM and 2 = STRONG: 0
   - Do you wish to continue with the password provided?(Press y|Y for Yes, any other key for No) : y
@@ -60,7 +42,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
   - Disallow root login remotely? (Press y|Y for Yes, any other key for No) : n
   - Reload privilege tables now? (Press y|Y for Yes, any other key for No) : y
   - Remove test database and access to it? (Press y|Y for Yes, any other key for No) : y
-
+```
 
   <center>
   <img alt="image1" src={useBaseUrl('img/docs/d5.png')} height="400px"/>
@@ -78,7 +60,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
   ```shell
   sudo mysql -u root -p
-````
+  ```
 
   <center>
   <img alt="image1" src={useBaseUrl('img/docs/d8.png')} height="400px"/>
