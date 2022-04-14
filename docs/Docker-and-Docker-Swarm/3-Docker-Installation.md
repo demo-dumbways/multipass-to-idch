@@ -7,12 +7,9 @@ sidebar_position: 3
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 :::info 
-buat server multipass dengan spek berikut ini
-```bash
-multipass launch --name (your name) --cpus 2 --mem 4
-```
+Buat server di **IdClouHost** dengan spek 1 core dan 2gb mem
 :::
-
+## 3.1 Manual Installation
 Sekarang kita akan mencoba untuk melakukan installasi `Docker` di dalam server yang telah kalian buat. Untuk melakukan installasi kalian dapat menggunakan beberapa perintah dibawah ini.
 
 ```bash
@@ -79,3 +76,36 @@ docker -v
   </center>
 
 
+## 3.2 Auto Installation
+
+Untuk melakukan instalasi docker secara langsung kedalam vm yang akan kita buat, kita dapat memanfaatkan fitur `app catalog` yang dimiliki oleh **IdCloudHost**. Kalian dapat mengikuti langkah-langkah di bawah ini
+
+Pastikan kalian telah login ke dalam akun yang telah disediakan untuk bahan pembelajaran kalian, setelah itu klik menu `virtual machine` 
+
+  <center>
+  <img alt="image1" src={useBaseUrl('img/docs/docidch1.png')} height="400px"/>
+  </center>
+
+Lalu pilih menu `app catalog` setelah itu pilih `docker` dengan version 20.10.
+
+  <center>
+  <img alt="image1" src={useBaseUrl('img/docs/docidch2.png')} height="400px"/>
+  </center>
+
+Untuk spesifikasi server sesuaikan dengan gambar di bawah, lalu untuk username dan yang lain sebagainya sesuaikan juga dengan apa yang kalian inginkan.
+
+  <center>
+  <img alt="image1" src={useBaseUrl('img/docs/docidch3.png')} height="400px"/>
+  </center>
+
+Jika sudah tunggu sampai proses pembuatan server selesai.
+
+  <center>
+  <img alt="image1" src={useBaseUrl('img/docs/docidch4.png')} height="400px"/>
+  </center>
+
+jika sudah selesai sekarang kita coba untuk masuk ke server dan kita cek apakah docker telah berhasil terinstall
+
+  <center>
+  <img alt="image1" src={useBaseUrl('img/docs/docidch5.png')} height="550px"/>
+  </center>

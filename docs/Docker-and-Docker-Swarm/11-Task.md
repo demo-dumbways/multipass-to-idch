@@ -19,7 +19,7 @@ Setelah mempelajari terkait Docker, Docker-Compose serta Docker Swarm. Maka sila
 </center>
 
 ## Ketentuan
-- Buatlah 3 buah server dengan menggunakan multipass dengan spesifikasi 2 cpus 2 mem
+- Buatlah 3 buah server dengan menggunakan IdCloudHost dengan spesifikasi 1 core 2gb mem
 - Lakukan Instalasi Docker pada ke 3 buah server yang telah kalian buat
 - Server pertama untuk nginx 
 - Server kedua untuk aplikasi
@@ -28,6 +28,7 @@ Setelah mempelajari terkait Docker, Docker-Compose serta Docker Swarm. Maka sila
 - Push Docker Images ke docker-hub https://hub.docker.com
 - Aplikasi di jalankan menggunakan docker-compose
 - Aplikasi dapat berjalan dan dapat melakukan registrasi
+- Buat Reverse proxy untuk aplikasi frontend dan backend dengan ketentuan yang sama seperti pertemuan sebelumnya
 
 ## 11.2 Pengumpulan
 1. Pastikan untuk mengerjakan tugas mingguan pada medium.com.
@@ -36,7 +37,7 @@ Setelah mempelajari terkait Docker, Docker-Compose serta Docker Swarm. Maka sila
 4. Clone Aplikasi berikut ini ```https://github.com/dumbwaysdev/waysgallery-frontend.git``` | ```https://github.com/dumbwaysdev/waysgallery-frontend.git```
 
 Referensi:
-- [Medium](/Getting-Started/Medium/Medium)
+- [Medium](https://ebook.dumbways.id/do-s1-gettingstarted/Getting-Started/Medium/Medium)
 
 ## 11.3 Project Management
 Tambahkan deskripsi berikut ke dalam kanban pada project management Anda
@@ -48,8 +49,10 @@ Tambahkan deskripsi berikut ke dalam kanban pada project management Anda
 ```                                     
 
 Referensi:
-- [Membuat GitHub Project](/Getting-Started/Project-Management/Make-Project-Management)
-- [Manage GitHub Issue](/Getting-Started/Project-Management/Issue-Dan-Status-Project)
+- [Membuat GitHub Project](https://ebook.dumbways.id/do-s1-gettingstarted/Getting-Started/Project-Management/Make-Project-Management)
+- [Manage GitHub Issue](https://ebook.dumbways.id/do-s1-gettingstarted/Getting-Started/Project-Management/Issue-Dan-Status-Project)
+- [Reverse Proxy](https://ebook.dumbways.id/do-s2-cloud-computing/CloudComputing/Reverse-Proxy#54-create-reverse-proxy)
+- [SSL Configuration](https://ebook.dumbways.id/do-s2-cloud-computing/CloudComputing/Reverse-Proxy#56-ssl-configuration)
 
 ## 11.4 Diskusi
 Silakan diskusikan terkait kendala atau kesulitan selama pembelajaran pada platform diskusi (slack/talk.ink) dengan membuat thread, misalnya "Introduction DevOps: problem cannot connect to network in VMware" 

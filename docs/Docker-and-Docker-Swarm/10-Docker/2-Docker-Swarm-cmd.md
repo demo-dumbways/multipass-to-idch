@@ -11,19 +11,14 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 Berikut ini adalah beberapa contoh perintah untuk menjalankan Docker Swarm.
 
 - :::info
-  Buat 3 buah server multipass dengan spek berikut ini :
-
-  ```bash
-  multipass launch --name (your name) --cpus 2 --mem 4
-  ```
-
+  Buat 3 buah server menggunakan IdCloudHost dengan spek 1 core dan 1gb mem spek berikut ini
   :::
 
 - Selanjutnya lakukan instalasi `docker engine` dan `docker compose` pada 3 buah server yang telah kalian buat.
 
-  **Docker Instalation**: [Here](/Docker-and-Docker-Swarm/Docker-installation)
+  **Docker Instalation**: [Here](https://ebook.dumbways.id/do-s2-docker/Docker-and-Docker-Swarm/Docker-Installation)
 
-  **Docker Compose Instalation**: [Here](/Docker-and-Docker-Swarm/Docker-compose)
+  **Docker Compose Instalation**: [Here](https://ebook.dumbways.id/do-s2-docker//Docker-and-Docker-Swarm/Docker-compose#91-docker-compose-installation)
 
 - Selanjutnya jalankan perintah dibawah ini pada server manager kalian.
 
